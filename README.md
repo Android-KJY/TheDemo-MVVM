@@ -2,7 +2,7 @@
 
 以[TheCore-MVVM](https://github.com/Theoneee/TheCore-MVVM/)为基础，创建的一个 [玩Android](http://wanandroid.com/) App。
 
-[点击下载](https://gitee.com/theoneee/the-base-mvvm/raw/master/apks/demo_release.apk)
+[点击下载](https://raw.githubusercontent.com/Theoneee/TheDemo-MVVM/master/apks/demo_release.apk)
 
 ![首页](https://images.gitee.com/uploads/images/2021/0331/102531_dd1b7778_2286054.png "S10331-10005279(1).png")
 
