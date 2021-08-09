@@ -2,6 +2,7 @@ package com.theone.demo.ui.fragment.sample
 
 import android.content.DialogInterface
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.theone.demo.R
 import com.theone.demo.data.model.bean.ArticleResponse
@@ -71,5 +72,9 @@ class SamplePagerFragment:
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
     }
+
+    override fun getRecyclerView(): RecyclerView = mBinding.recyclerView
+
+    override fun getRefreshLayout(): PullRefreshLayout? = mBinding.refreshLayout
 
 }

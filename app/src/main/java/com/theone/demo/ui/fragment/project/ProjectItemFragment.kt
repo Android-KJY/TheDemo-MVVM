@@ -1,7 +1,7 @@
 package com.theone.demo.ui.fragment.project
 
 import android.os.Bundle
-import com.theone.demo.ui.fragment.BaseArticleFragment
+import com.theone.demo.ui.fragment.base.BaseArticleFragment
 import com.theone.demo.viewmodel.ProjectItemViewModel
 
 

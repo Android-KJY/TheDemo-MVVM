@@ -23,7 +23,6 @@ import com.theone.demo.ui.fragment.share.ShareArticleFragment
 import com.theone.demo.viewmodel.AppViewModel
 import com.theone.demo.viewmodel.MineRequestViewModel
 import com.theone.demo.viewmodel.MineViewModel
-import com.theone.mvvm.base.IClick
 import com.theone.mvvm.core.base.fragment.BaseCoreFragment
 import com.theone.mvvm.ext.getAppViewModel
 import com.theone.mvvm.ext.qmui.*
@@ -119,7 +118,7 @@ class MineFragment : BaseCoreFragment<MineViewModel, FragmentMineBinding>(), Vie
                     mViewModel.level.set("等级 $level")
                 }
             })
-            getErrorMsgLiveData().observeInFragment(this@MineFragment, Observer {
+            getErrorLiveData().observeInFragment(this@MineFragment, Observer {
                 showFailTipsDialog(it)
             })
             getFinallyLiveData().observeInFragment(this@MineFragment, Observer {
@@ -191,9 +190,9 @@ class MineFragment : BaseCoreFragment<MineViewModel, FragmentMineBinding>(), Vie
         }
     }
 
-    override fun getBindingClick(): IClick? = ProxyClick()
+    override fun getBindingClick(): Any? = ProxyClick()
 
-    inner class ProxyClick:IClick {
+    inner class ProxyClick {
 
         fun doLogin() {
             checkLogin {

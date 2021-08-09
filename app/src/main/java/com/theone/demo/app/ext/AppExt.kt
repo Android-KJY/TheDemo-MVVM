@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.theone.mvvm.base.fragment.BaseQMUIFragment
 import com.theone.mvvm.ext.qmui.showFailTipsDialog
 
 
@@ -62,14 +61,14 @@ fun BaseQuickAdapter<*, *>.setAdapterAnimation(mode: Int?) {
             setAnimationWithDefault(BaseQuickAdapter.AnimationType.values()[it - 1])
         }
     }
-
 }
+
+val filters = arrayOf("https://blog.csdn.net/", "https://juejin.cn/","https://www.jianshu.com/")
 
 /**
  * 是否为官方链接自动通过
  */
 fun isShareAutoPass(url:String):Boolean{
-    val filters = arrayOf("https://blog.csdn.net/", "https://juejin.cn/","https://www.jianshu.com/")
     filters.forEach {
         if(url.contains(it)){
             return true

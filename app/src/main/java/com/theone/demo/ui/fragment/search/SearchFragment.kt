@@ -6,6 +6,8 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.qmuiteam.qmui.widget.QMUIFloatLayout
@@ -25,6 +27,7 @@ import com.theone.common.ext.textStringTrim
 import com.theone.common.widget.TheSearchView
 import com.theone.mvvm.core.base.fragment.BasePagerSwipeRefreshFragment
 import com.theone.mvvm.core.databinding.BaseRecyclerPagerFragmentBinding
+import com.theone.mvvm.core.databinding.BaseSwipeRefreshFragmentBinding
 import com.theone.mvvm.core.ext.showSuccessPage
 import com.theone.mvvm.ext.qmui.showMsgDialog
 
@@ -54,7 +57,7 @@ import com.theone.mvvm.ext.qmui.showMsgDialog
  * @remark
  */
 class SearchFragment :
-    BasePagerSwipeRefreshFragment<String, SearchViewModel, BaseRecyclerPagerFragmentBinding>(),
+    BasePagerSwipeRefreshFragment<String, SearchViewModel, BaseSwipeRefreshFragmentBinding>(),
     View.OnClickListener,
     TheSearchView.OnTextChangedListener, QMUIDialogAction.ActionListener, OnItemChildClickListener {
 
@@ -204,5 +207,9 @@ class SearchFragment :
             updateKey(content)
         }
     }
+
+    override fun getRecyclerView(): RecyclerView = mBinding.recyclerView
+
+    override fun getRefreshLayout(): SwipeRefreshLayout? = mBinding.swipeRefresh
 
 }

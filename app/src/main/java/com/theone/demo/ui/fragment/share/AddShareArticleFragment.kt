@@ -2,8 +2,6 @@ package com.theone.demo.ui.fragment.share
 
 import android.view.View
 import android.widget.TextView
-import com.qmuiteam.qmui.skin.QMUISkinHelper
-import com.qmuiteam.qmui.skin.QMUISkinValueBuilder
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
@@ -14,7 +12,6 @@ import com.theone.demo.app.ext.isShareAutoPass
 import com.theone.demo.databinding.FragmentArticleAddBinding
 import com.theone.demo.viewmodel.AddShareArticleViewModel
 import com.theone.demo.viewmodel.AppViewModel
-import com.theone.mvvm.base.IClick
 import com.theone.mvvm.ext.getAppViewModel
 import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
 import com.theone.mvvm.ext.qmui.showFailTipsDialog
@@ -54,8 +51,6 @@ class AddShareArticleFragment :
     private val mRulesPopup: QMUIPopup by lazy {
         createRulesPopup()
     }
-
-    override fun getLayoutId(): Int = R.layout.fragment_article_add
 
     override fun initView(rootView: View) {
         getTopBar()?.run {
@@ -108,14 +103,12 @@ class AddShareArticleFragment :
     }
 
     private fun createRulesPopup(): QMUIPopup {
-        val textView = TextView(context)
-        textView.setLineSpacing(QMUIDisplayHelper.dp2px(context, 4).toFloat(), 1.0f)
         val padding = QMUIDisplayHelper.dp2px(context, 20)
-        textView.setPadding(padding, padding, padding, padding)
-        textView.text = getString(R.string.share_article_rules)
-        val builder = QMUISkinValueBuilder.acquire()
-        QMUISkinHelper.setSkinValue(textView, builder)
-        builder.release()
+        val textView = TextView(context).apply {
+            setLineSpacing(QMUIDisplayHelper.dp2px(context, 4).toFloat(), 1.0f)
+            setPadding(padding, padding, padding, padding)
+            text = getString(R.string.share_article_rules)
+        }
         return QMUIPopups.popup(context, QMUIDisplayHelper.dp2px(context, 250))
             .preferredDirection(QMUIPopup.DIRECTION_TOP)
             .view(textView)
@@ -128,9 +121,9 @@ class AddShareArticleFragment :
             .animStyle(QMUIPopup.ANIM_GROW_FROM_CENTER).dimAmount(0.5f)
     }
 
-    override fun getBindingClick(): IClick? = ProxyClick()
+    override fun getBindingClick(): Any = ProxyClick()
 
-    inner class ProxyClick:IClick {
+    inner class ProxyClick {
 
         fun add() {
             when {

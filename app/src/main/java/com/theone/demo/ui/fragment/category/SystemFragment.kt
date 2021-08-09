@@ -6,7 +6,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.theone.demo.data.model.bean.SystemResponse
 import com.theone.demo.ui.adapter.SystemAdapter
-import com.theone.demo.ui.fragment.BasePagerListFragment
+import com.theone.demo.ui.fragment.base.BasePagerDbFragment
+import com.theone.demo.ui.fragment.base.BasePagerListFragment
 import com.theone.demo.viewmodel.SystemViewModel
 import com.theone.mvvm.core.databinding.BaseRecyclerPagerFragmentBinding
 
@@ -36,7 +37,7 @@ import com.theone.mvvm.core.databinding.BaseRecyclerPagerFragmentBinding
  * @remark
  */
 class SystemFragment:
-    BasePagerListFragment<SystemResponse, SystemViewModel, BaseRecyclerPagerFragmentBinding>() {
+    BasePagerDbFragment<SystemResponse, SystemViewModel>() {
 
     override fun createAdapter(): SystemAdapter  = SystemAdapter(this)
 

@@ -19,10 +19,10 @@ import com.theone.demo.viewmodel.HomeViewModel
 import com.theone.demo.app.widget.OffsetLinearLayoutManager
 import com.theone.demo.app.widget.banner.HomeBannerAdapter
 import com.theone.demo.app.widget.banner.HomeBannerViewHolder
-import com.theone.demo.ui.fragment.BaseArticleFragment
+import com.theone.demo.ui.fragment.base.BaseArticleFragment
 import com.theone.demo.ui.fragment.search.SearchFragment
 import com.theone.demo.ui.fragment.web.WebExplorerFragment
-import com.theone.common.ext.goneViews
+import com.theone.common.ext.invisibleViews
 import com.theone.common.ext.showViews
 import com.theone.mvvm.ext.qmui.updateStatusBarMode
 import com.zhpan.bannerview.BannerViewPager
@@ -81,7 +81,7 @@ class HomeFragment : BaseArticleFragment<HomeViewModel>(), View.OnClickListener 
             mSearchBtn =
                 addRightImageButton(R.drawable.mz_titlebar_ic_search_light, R.id.topbar_search)
             mSearchBtn.setOnClickListener(this@HomeFragment)
-            goneViews(mSearchBtn)
+            invisibleViews(mSearchBtn)
             if (showBanner())
                 setBackgroundAlpha(0)
         }
@@ -95,7 +95,6 @@ class HomeFragment : BaseArticleFragment<HomeViewModel>(), View.OnClickListener 
                 setStatusBarMode(false)
             })
         }
-
     }
 
     override fun initAdapter() {

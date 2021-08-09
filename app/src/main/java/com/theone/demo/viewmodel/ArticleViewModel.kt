@@ -28,9 +28,9 @@ abstract class ArticleViewModel(val url: String? = null) : BasePagerViewModel<Ar
         })
     }
 
-    override fun onSuccess(response: List<ArticleResponse>?) {
+    override fun onSuccess(response: PagerResponse<List<ArticleResponse>>?) {
         // 第一次是从缓存里获取，这里要拿用户里收藏的判断一下
-        response?.run {
+        response?.datas?.run {
             if (isFirst) {
                 val user = CacheUtil.getUser()
                 user?.collectIds?.forEach { id ->

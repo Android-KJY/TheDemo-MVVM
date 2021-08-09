@@ -2,7 +2,7 @@ package com.theone.demo.ui.fragment.share
 
 import android.view.View
 import com.theone.demo.R
-import com.theone.demo.ui.fragment.BaseArticleFragment
+import com.theone.demo.ui.fragment.base.BaseArticleFragment
 import com.theone.demo.viewmodel.ShareArticleViewModel
 import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
 

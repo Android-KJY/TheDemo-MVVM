@@ -1,4 +1,4 @@
-package com.theone.demo.ui.fragment
+package com.theone.demo.ui.fragment.base
 
 import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding

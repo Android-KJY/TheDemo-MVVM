@@ -6,9 +6,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.theone.demo.data.model.bean.IntegralHistoryResponse
 import com.theone.demo.ui.adapter.IntegralHistoryAdapter
-import com.theone.demo.ui.fragment.BasePagerListFragment
+import com.theone.demo.ui.fragment.base.BasePagerDbFragment
+import com.theone.demo.ui.fragment.base.BasePagerListFragment
 import com.theone.demo.viewmodel.IntegralHistoryViewModel
-import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
 import com.theone.mvvm.core.databinding.BaseRecyclerPagerFragmentBinding
 import com.theone.mvvm.ext.qmui.setTitleWitchBackBtn
 
@@ -37,12 +37,13 @@ import com.theone.mvvm.ext.qmui.setTitleWitchBackBtn
  * @email 625805189@qq.com
  * @remark
  */
-class IntegralHistoryFragment:BasePagerListFragment<IntegralHistoryResponse,IntegralHistoryViewModel, BaseRecyclerPagerFragmentBinding>() {
+class IntegralHistoryFragment:
+    BasePagerDbFragment<IntegralHistoryResponse, IntegralHistoryViewModel>() {
 
     override fun createAdapter(): BaseQuickAdapter<IntegralHistoryResponse, *> = IntegralHistoryAdapter()
 
-    override fun initView(rootView: View) {
-        super.initView(rootView)
+    override fun initView(root: View) {
+        super.initView(root)
         setTitleWitchBackBtn("积分记录")
     }
 

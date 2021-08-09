@@ -100,7 +100,7 @@ class SettingFragment : BaseCoreFragment<SettingViewModel, FragmentSettingBindin
                 CacheUtil.loginOut()
                 showSuccessTipsExitDialog("退出成功")
             })
-            getErrorMsgLiveData().observeInFragment(this@SettingFragment, Observer {
+            getErrorLiveData().observeInFragment(this@SettingFragment, Observer {
                 showFailTipsDialog(it)
             })
         }

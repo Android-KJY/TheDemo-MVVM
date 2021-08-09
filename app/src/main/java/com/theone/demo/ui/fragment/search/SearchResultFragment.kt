@@ -2,7 +2,7 @@ package com.theone.demo.ui.fragment.search
 
 import android.os.Bundle
 import android.view.View
-import com.theone.demo.ui.fragment.BaseArticleFragment
+import com.theone.demo.ui.fragment.base.BaseArticleFragment
 import com.theone.demo.viewmodel.SearchResultModel
 import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
 import com.theone.common.constant.BundleConstant

@@ -1,16 +1,11 @@
-package com.theone.demo.ui.fragment.category
+package com.theone.demo.ui.fragment.base
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.theone.demo.data.model.bean.NavigationResponse
-import com.theone.demo.ui.adapter.NavAdapter
-import com.theone.demo.ui.fragment.base.BasePagerDbFragment
-import com.theone.demo.ui.fragment.base.BasePagerListFragment
-import com.theone.demo.viewmodel.NavViewModel
+import com.theone.mvvm.core.base.viewmodel.BaseListViewModel
 import com.theone.mvvm.core.databinding.BaseSwipeRefreshFragmentBinding
-
 
 //  ┏┓　　　┏┓
 //┏┛┻━━━┛┻┓
@@ -31,18 +26,17 @@ import com.theone.mvvm.core.databinding.BaseSwipeRefreshFragmentBinding
 //      ┗┻┛　┗┻┛
 /**
  * @author The one
- * @date 2021/3/4 0004
+ * @date 2021-08-09 15:43
  * @describe TODO
  * @email 625805189@qq.com
  * @remark
  */
-class NavFragment:
-    BasePagerDbFragment<NavigationResponse, NavViewModel>() {
+abstract class BasePagerDbFragment<T, VM : BaseListViewModel<T>>:BasePagerListFragment<T,VM, BaseSwipeRefreshFragmentBinding>() {
 
-    override fun createAdapter(): NavAdapter  = NavAdapter(this)
+    override fun getDataBindingClass(): Class<*>  = BaseSwipeRefreshFragmentBinding::class.java
 
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+    override fun getRecyclerView(): RecyclerView = mBinding.recyclerView
 
-    }
+    override fun getRefreshLayout(): SwipeRefreshLayout? = mBinding.swipeRefresh
 
 }

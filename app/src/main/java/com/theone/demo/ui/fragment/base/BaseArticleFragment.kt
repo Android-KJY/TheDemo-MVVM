@@ -1,7 +1,9 @@
-package com.theone.demo.ui.fragment
+package com.theone.demo.ui.fragment.base
 
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.theone.demo.R
@@ -12,7 +14,7 @@ import com.theone.demo.ui.adapter.ArticleAdapter
 import com.theone.demo.ui.fragment.collection.CollectionArticleFragment
 import com.theone.demo.ui.fragment.web.WebExplorerFragment
 import com.theone.demo.viewmodel.ArticleViewModel
-import com.theone.mvvm.core.databinding.BaseRecyclerPagerFragmentBinding
+import com.theone.mvvm.core.databinding.BaseSwipeRefreshFragmentBinding
 import com.theone.mvvm.ext.qmui.showFailTipsDialog
 
 
@@ -41,7 +43,7 @@ import com.theone.mvvm.ext.qmui.showFailTipsDialog
  * @remark
  */
 abstract class BaseArticleFragment<VM : ArticleViewModel> :
-    BasePagerListFragment<ArticleResponse, VM,BaseRecyclerPagerFragmentBinding>(),
+    BasePagerDbFragment<ArticleResponse, VM>(),
     OnItemChildClickListener {
 
     override fun getViewModelIndex(): Int = 0

@@ -40,6 +40,8 @@ import com.theone.mvvm.core.base.fragment.BaseTabIndexFragment
  */
 class IndexFragment : BaseTabIndexFragment<BaseViewModel>() {
 
+    override fun isExitPage(): Boolean = true
+
     override fun isNeedChangeStatusBarMode(): Boolean = false
 
     override fun createTabBuilder(): QMUITabBuilder? {

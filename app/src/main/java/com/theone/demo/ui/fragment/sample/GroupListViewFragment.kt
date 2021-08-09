@@ -11,7 +11,6 @@ import com.theone.demo.databinding.FragmentSampleGroupListViewBinding
 import com.theone.mvvm.base.viewmodel.BaseViewModel
 import com.theone.mvvm.core.base.fragment.BaseCoreFragment
 import com.theone.mvvm.ext.qmui.*
-import kotlinx.android.synthetic.main.fragment_sample_group_list_view.*
 
 
 //  ┏┓　　　┏┓
@@ -40,8 +39,6 @@ import kotlinx.android.synthetic.main.fragment_sample_group_list_view.*
  */
 class GroupListViewFragment : BaseCoreFragment<BaseViewModel, FragmentSampleGroupListViewBinding>(),
     CompoundButton.OnCheckedChangeListener, View.OnClickListener {
-
-    override fun getLayoutId(): Int = R.layout.fragment_sample_group_list_view
 
     override fun initView(rootView: View) {
         getTopBar()?.setTitleWithBackBtn(TAG, this)

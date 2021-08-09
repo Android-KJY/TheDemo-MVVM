@@ -1,5 +1,6 @@
 package com.theone.demo.viewmodel
 
+import com.theone.demo.app.net.PagerResponse
 import com.theone.demo.data.model.bean.ArticleResponse
 import com.theone.demo.app.net.Url
 import rxhttp.wrapper.cahce.CacheMode
@@ -32,8 +33,8 @@ import rxhttp.wrapper.cahce.CacheMode
 class CollectionArticleViewModel : ArticleViewModel(Url.MY_COLLECTION_ARTICLES) {
 
     // 收藏这里把所有的都设置为已收藏
-    override fun onSuccess(response: List<ArticleResponse>?) {
-        response?.forEach { it ->
+    override fun onSuccess(response: PagerResponse<List<ArticleResponse>>?) {
+        response?.datas?.forEach { it ->
             it.collect = true
         }
         super.onSuccess(response)

@@ -1,7 +1,6 @@
 package com.theone.demo.ui.fragment.sample
 
 import android.text.SpannableString
-import android.text.Spanned
 import android.view.View
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
@@ -13,7 +12,6 @@ import com.theone.mvvm.core.base.fragment.BaseCoreFragment
 import com.theone.mvvm.ext.qmui.addToGroup
 import com.theone.mvvm.ext.qmui.createItem
 import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
-import kotlinx.android.synthetic.main.fragment_sample_string_ext.*
 
 //  ┏┓　　　┏┓
 //┏┛┻━━━┛┻┓
@@ -52,13 +50,11 @@ class StringExtFragment : BaseCoreFragment<StringExtViewModel, FragmentSampleStr
     private lateinit var BOLD_ITALIC2: QMUICommonListItemView
     private lateinit var SKIN: QMUICommonListItemView
 
-    override fun getLayoutId(): Int = R.layout.fragment_sample_string_ext
-
     override fun initView(root: View) {
         getTopBar()?.run {
             setTitleWithBackBtn("StringExt", this@StringExtFragment)
         }
-        groupListView.run {
+        mBinding.groupListView.run {
             ForegroundColorSpan =
                 createItem("前景色", SpanType.ForegroundColorSpan)
             BackgroundColorSpan =

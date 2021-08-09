@@ -10,7 +10,6 @@ import com.theone.demo.app.util.CacheUtil
 import com.theone.demo.viewmodel.LoginRegisterViewModel
 import com.theone.demo.databinding.FragmentLoginRegisterBinding
 import com.theone.demo.viewmodel.AppViewModel
-import com.theone.mvvm.base.IClick
 import com.theone.mvvm.ext.getAppViewModel
 import com.theone.mvvm.core.base.fragment.BaseCoreFragment
 import com.theone.mvvm.ext.qmui.showFailTipsDialog
@@ -35,7 +34,7 @@ class LoginRegisterItemFragment :
 
     override fun getLayoutId(): Int = R.layout.fragment_login_register
 
-    override fun getBindingClick(): IClick?  = ProxyClick()
+    override fun getBindingClick(): Any?  = ProxyClick()
 
     override fun initView(root: View) {
         mViewModel.isRegister.set(isRegister)
@@ -48,7 +47,7 @@ class LoginRegisterItemFragment :
                 CacheUtil.setUser(it)
                 showSuccessTipsExitDialog(if (isRegister.get()) "注册" else "登录"+"成功")
             })
-            getErrorMsgLiveData().observeInFragment(this@LoginRegisterItemFragment, Observer {
+            getErrorLiveData().observeInFragment(this@LoginRegisterItemFragment, Observer {
                 showFailTipsDialog(it)
             })
         }
@@ -56,7 +55,7 @@ class LoginRegisterItemFragment :
     }
 
 
-    inner class ProxyClick :IClick{
+    inner class ProxyClick{
 
         fun login() {
             when {

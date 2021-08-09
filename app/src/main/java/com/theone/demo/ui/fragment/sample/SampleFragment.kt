@@ -2,14 +2,12 @@ package com.theone.demo.ui.fragment.sample
 
 import android.view.View
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView
-import com.theone.demo.R
 import com.theone.demo.databinding.FragmentSampleBinding
 import com.theone.mvvm.ext.qmui.addToGroup
 import com.theone.mvvm.base.viewmodel.BaseViewModel
 import com.theone.mvvm.core.base.fragment.BaseCoreFragment
 import com.theone.mvvm.ext.qmui.createItem
 import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
-import kotlinx.android.synthetic.main.fragment_sample.*
 
 
 //  ┏┓　　　┏┓
@@ -39,8 +37,6 @@ import kotlinx.android.synthetic.main.fragment_sample.*
 class SampleFragment : BaseCoreFragment<BaseViewModel, FragmentSampleBinding>(),
     View.OnClickListener {
 
-    override fun getLayoutId(): Int = R.layout.fragment_sample
-
     lateinit var mGroupListView: QMUICommonListItemView
     lateinit var mPager: QMUICommonListItemView
     lateinit var mTest: QMUICommonListItemView
@@ -50,7 +46,7 @@ class SampleFragment : BaseCoreFragment<BaseViewModel, FragmentSampleBinding>(),
 
     override fun initView(root: View) {
         getTopBar()?.setTitleWithBackBtn("示例", this)
-        groupListView.run {
+        mBinding.groupListView.run {
             mPager = createItem("BasePagerPullRefreshFragment")
             mGroupListView = createItem("QMUIGroupListView")
             mStringExt=  createItem("StringExt")

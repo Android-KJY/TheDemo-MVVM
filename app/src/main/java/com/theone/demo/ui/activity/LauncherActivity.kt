@@ -16,7 +16,7 @@ class LauncherActivity : BaseCoreActivity<BaseViewModel, ActivityLauncherBinding
     TypeTextView.OnTypeViewListener {
 
     private val mTypes: Array<String> by lazy {
-        resources.getStringArray(R.array.launcher)
+        resources.getStringArray(R.array.nonsenses)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +29,6 @@ class LauncherActivity : BaseCoreActivity<BaseViewModel, ActivityLauncherBinding
 
     override fun showTopBar(): Boolean = false
 
-    override fun getLayoutId(): Int = R.layout.activity_launcher
-
     override fun initView(root: View) {
         // 再次安装后请求时要清除，不然会读取到
         if(CacheUtil.isFirst()){
@@ -38,17 +36,16 @@ class LauncherActivity : BaseCoreActivity<BaseViewModel, ActivityLauncherBinding
             CacheUtil.isEnterApp()
         }
 
-        startToMain(100)
-//        val tips = mTypes[(mTypes.indices).random()]
-//        mBinding.tvType.run {
-//            if (CacheUtil.isOpenLauncherText()) {
-//                setOnTypeViewListener(this@LauncherActivity)
-//                start(tips, 220)
-//            } else {
-//                text = tips
-//                startToMain(3000)
-//            }
-//        }
+        val tips = mTypes[(mTypes.indices).random()]
+        mBinding.tvType.run {
+            if (CacheUtil.isOpenLauncherText()) {
+                setOnTypeViewListener(this@LauncherActivity)
+                start(tips, 120)
+            } else {
+                text = tips
+                startToMain(2000)
+            }
+        }
     }
 
     override fun createObserver() {
