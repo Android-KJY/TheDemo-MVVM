@@ -74,8 +74,8 @@ class HomeFragment : BaseArticleFragment<HomeViewModel>(), View.OnClickListener 
 
     override fun getItemSpace(): Int = 0
 
-    override fun initView(rootView: View) {
-        super.initView(rootView)
+    override fun initView(root: View) {
+        super.initView(root)
         getTopBar()?.run {
             mTitleView = setTitle("首页")
             mSearchBtn =

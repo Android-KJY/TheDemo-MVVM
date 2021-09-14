@@ -4,6 +4,7 @@ import androidx.lifecycle.rxLifeScope
 import com.theone.demo.data.model.bean.ArticleResponse
 import com.theone.demo.app.net.PagerResponse
 import com.theone.demo.app.net.Url
+import com.theone.demo.data.repository.ApiRepository
 import com.theone.mvvm.core.ext.request
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
@@ -39,12 +40,7 @@ class SearchResultModel : ArticleViewModel() {
 
     override fun requestServer() {
         request({
-            val response = RxHttp.postForm(Url.SEARCH, page)
-                .add("k",mKey)
-                .setCacheMode(getCacheMode())
-                .toResponse<PagerResponse<List<ArticleResponse>>>()
-                .await()
-            onSuccess(response)
+            onSuccess(ApiRepository().search(page,mKey,getCacheMode()))
         })
     }
 

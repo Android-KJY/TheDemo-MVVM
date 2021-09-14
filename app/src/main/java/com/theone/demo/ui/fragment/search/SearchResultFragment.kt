@@ -6,6 +6,7 @@ import com.theone.demo.ui.fragment.base.BaseArticleFragment
 import com.theone.demo.viewmodel.SearchResultModel
 import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
 import com.theone.common.constant.BundleConstant
+import com.theone.common.ext.getValueNonNull
 
 
 //  ┏┓　　　┏┓
@@ -32,7 +33,7 @@ import com.theone.common.constant.BundleConstant
  * @email 625805189@qq.com
  * @remark
  */
-class SearchResultFragment :
+class SearchResultFragment private constructor():
     BaseArticleFragment<SearchResultModel>() {
 
     companion object {
@@ -45,11 +46,12 @@ class SearchResultFragment :
         }
     }
 
-    override fun initView(rootView: View) {
-        val key = requireArguments().getString(BundleConstant.DATA,"")
-        mViewModel.mKey = key
-        super.initView(rootView)
-        getTopBar()?.setTitleWithBackBtn(key,this)
+    private val mKey :String by getValueNonNull(BundleConstant.DATA)
+
+    override fun initView(root: View) {
+        mViewModel.mKey = mKey
+        super.initView(root)
+        getTopBar()?.setTitleWithBackBtn(mKey,this)
     }
 
     /**

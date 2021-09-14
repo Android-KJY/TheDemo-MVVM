@@ -34,7 +34,7 @@ class SettingFragment : BaseCoreFragment<SettingViewModel, FragmentSettingBindin
     private lateinit var mAnimation: QMUICommonListItemView
     private lateinit var mTheme: QMUICommonListItemView
     private lateinit var mAuthor: QMUICommonListItemView
-    private lateinit var mTheBase: QMUICommonListItemView
+    private lateinit var mTheDemo: QMUICommonListItemView
     private lateinit var mLauncherTips: QMUICommonListItemView
 
 
@@ -72,7 +72,7 @@ class SettingFragment : BaseCoreFragment<SettingViewModel, FragmentSettingBindin
                 R.drawable.svg_setting_author
             )
 
-            mTheBase = createItem("项目地址", "TheBase-MVVM", R.drawable.svg_setting_project)
+            mTheDemo = createItem("项目地址", "TheDemo-MVVM", R.drawable.svg_setting_project)
 
             addToGroup(
                 mAnimation,
@@ -81,7 +81,7 @@ class SettingFragment : BaseCoreFragment<SettingViewModel, FragmentSettingBindin
                 title = "个性化",
                 listener = this@SettingFragment
             )
-            addToGroup(mVersion, mAuthor, mTheBase, title = "关于", listener = this@SettingFragment)
+            addToGroup(mVersion, mAuthor, mTheDemo, title = "关于", listener = this@SettingFragment)
 
             mLoginOut = createItem("退出账号", drawable = R.drawable.svg_setting_login_out)
             if (CacheUtil.isLogin()) {
@@ -117,11 +117,11 @@ class SettingFragment : BaseCoreFragment<SettingViewModel, FragmentSettingBindin
             mTheme -> {
                 showMsgTipsDialog("开发中...")
             }
-            mTheBase -> startFragment(
+            mTheDemo -> startFragment(
                 WebExplorerFragment.newInstance(
                     BannerResponse(
-                        title = "TheBase-MVVM",
-                        url = "https://gitee.com/theoneee/The-Base-MVVM"
+                        title = "TheDemo-MVVM",
+                        url = "https://github.com/Theoneee/TheDemo-MVVM"
                     )
                 )
             )

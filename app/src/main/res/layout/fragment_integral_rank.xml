@@ -4,6 +4,9 @@
 
     <data>
         <variable
+            name="vm"
+            type="com.theone.demo.viewmodel.IntegralRankViewModel" />
+        <variable
             name="bean"
             type="com.theone.demo.data.model.bean.IntegralResponse" />
     </data>
@@ -28,6 +31,7 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <include layout="@layout/item_integral_rank"
+            visible="@{vm.showMineRank}"
             app:item="@{bean}"/>
 
 <!--        <com.qmuiteam.qmui.layout.QMUILinearLayout-->

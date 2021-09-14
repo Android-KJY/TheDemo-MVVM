@@ -3,6 +3,7 @@ package com.theone.demo.viewmodel
 import com.theone.demo.app.net.PagerResponse
 import com.theone.demo.app.net.Url
 import com.theone.demo.data.model.bean.IntegralHistoryResponse
+import com.theone.demo.data.repository.ApiRepository
 import com.theone.mvvm.core.ext.request
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
@@ -40,11 +41,7 @@ class IntegralHistoryViewModel:BasePagerViewModel<IntegralHistoryResponse>() {
 
     override fun requestServer() {
         request({
-            val response = RxHttp.get(Url.INTEGRAL_HISTORY,page)
-                .setCacheMode(getCacheMode())
-                .toResponse<PagerResponse<List<IntegralHistoryResponse>>>()
-                .await()
-            onSuccess(response)
+            onSuccess(ApiRepository().getIntegralHistory(page,getCacheMode()))
         })
     }
 

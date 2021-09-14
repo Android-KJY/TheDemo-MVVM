@@ -1,9 +1,9 @@
 ext {
 
     minSdkVersion = 21
-    targetSdkVersion = 29
-    compileSdkVersion = 29
-    buildVersion = '29.0.3'
+    targetSdkVersion = 30
+    compileSdkVersion = 30
+    buildVersion = '30.0.3'
 
     lifecycle_version = "2.2.0"
 
@@ -15,7 +15,7 @@ ext {
     okhttpUtilVersion = '2.6.2'
 
     // rxHttp
-    rxhttpVersion = '2.6.5'
+    rxhttpVersion = '2.6.6'
     rxlifeCoroutine = '2.1.0'
     rxlifeVersion = '2.1.0'
     rxJava = 'rxjava2'

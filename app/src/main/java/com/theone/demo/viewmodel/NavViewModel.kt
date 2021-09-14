@@ -3,6 +3,7 @@ package com.theone.demo.viewmodel
 import com.theone.demo.data.model.bean.NavigationResponse
 import com.theone.demo.app.net.PagerResponse
 import com.theone.demo.app.net.Url
+import com.theone.demo.data.repository.ApiRepository
 import com.theone.mvvm.core.ext.request
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
@@ -36,15 +37,7 @@ class NavViewModel:BasePagerViewModel<NavigationResponse>() {
 
     override fun requestServer() {
         request({
-            val response = RxHttp.get(Url.NAVIGATION)
-                .setCacheMode(getCacheMode())
-                .toResponse<List<NavigationResponse>>()
-                .await()
-            val data = PagerResponse<List<NavigationResponse>>()
-            data.datas = response
-            data.curPage = 1
-            data.pageCount =1
-            onSuccess(data)
+            onSuccess(ApiRepository().getNavigation(getCacheMode()))
         })
     }
 

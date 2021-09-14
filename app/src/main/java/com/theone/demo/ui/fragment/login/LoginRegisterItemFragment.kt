@@ -32,8 +32,6 @@ class LoginRegisterItemFragment :
 
     private val isRegister :Boolean by getValueNonNull(TYPE)
 
-    override fun getLayoutId(): Int = R.layout.fragment_login_register
-
     override fun getBindingClick(): Any?  = ProxyClick()
 
     override fun initView(root: View) {
@@ -59,7 +57,7 @@ class LoginRegisterItemFragment :
 
         fun login() {
             when {
-                mViewModel.account.value.isEmpty() -> showFailTipsDialog("请填写账号")
+                mViewModel.account.get().isEmpty() -> showFailTipsDialog("请填写账号")
                 mViewModel.password.get().isEmpty() -> showFailTipsDialog("请填写密码")
                 mViewModel.isRegister.get() && mViewModel.repassword.get()
                     .isEmpty() -> showFailTipsDialog("请填写确认密码")

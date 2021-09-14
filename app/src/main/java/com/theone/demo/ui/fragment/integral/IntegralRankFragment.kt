@@ -46,7 +46,7 @@ import com.theone.mvvm.ext.qmui.setTitleWitchBackBtn
  * @email 625805189@qq.com
  * @remark
  */
-class IntegralRankFragment :
+class IntegralRankFragment private constructor():
     BasePagerListFragment<IntegralResponse, IntegralRankViewModel, FragmentIntegralRankBinding>() {
 
     companion object {

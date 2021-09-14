@@ -40,7 +40,7 @@ import com.theone.mvvm.ext.qmui.*
 class GroupListViewFragment : BaseCoreFragment<BaseViewModel, FragmentSampleGroupListViewBinding>(),
     CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
-    override fun initView(rootView: View) {
+    override fun initView(root: View) {
         getTopBar()?.setTitleWithBackBtn(TAG, this)
         mBinding.groupListView.run {
             val normal = createItem("普通的Item")

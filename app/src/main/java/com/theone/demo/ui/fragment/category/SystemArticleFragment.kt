@@ -3,6 +3,8 @@ package com.theone.demo.ui.fragment.category
 import android.os.Bundle
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.theone.common.constant.BundleConstant
+import com.theone.common.ext.getValueNonNull
 import com.theone.demo.data.model.bean.ClassifyResponse
 import com.theone.demo.ui.fragment.base.BaseArticleFragment
 import com.theone.demo.viewmodel.SystemArticleViewModel
@@ -33,23 +35,26 @@ import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
  * @email 625805189@qq.com
  * @remark
  */
-class SystemArticleFragment :
+class SystemArticleFragment private constructor():
     BaseArticleFragment<SystemArticleViewModel>() {
 
     companion object {
         fun newInstance(data: ClassifyResponse): SystemArticleFragment {
             return  SystemArticleFragment().apply {
                 arguments = Bundle().apply {
-                    putParcelable("DATA", data)
+                    putParcelable(BundleConstant.DATA, data)
                 }
             }
         }
     }
 
+    private val data:ClassifyResponse by getValueNonNull(BundleConstant.DATA)
+
     override fun initData() {
-        val data = requireArguments().getParcelable<ClassifyResponse>("DATA")
-        getTopBar()?.setTitleWithBackBtn(data!!.name,this)
-        mViewModel.mId = data!!.id
+        data.let {
+            getTopBar()?.setTitleWithBackBtn(it.name,this)
+            mViewModel.mId = it.id
+        }
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {

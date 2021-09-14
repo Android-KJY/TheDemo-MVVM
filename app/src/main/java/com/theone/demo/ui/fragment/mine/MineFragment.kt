@@ -21,8 +21,8 @@ import com.theone.demo.ui.fragment.integral.IntegralHistoryFragment
 import com.theone.demo.ui.fragment.integral.IntegralRankFragment
 import com.theone.demo.ui.fragment.share.ShareArticleFragment
 import com.theone.demo.viewmodel.AppViewModel
-import com.theone.demo.viewmodel.MineRequestViewModel
-import com.theone.demo.viewmodel.MineViewModel
+import com.theone.demo.viewmodel.request.MineRequestViewModel
+import com.theone.demo.viewmodel.state.MineViewModel
 import com.theone.mvvm.core.base.fragment.BaseCoreFragment
 import com.theone.mvvm.ext.getAppViewModel
 import com.theone.mvvm.ext.qmui.*
@@ -68,8 +68,6 @@ class MineFragment : BaseCoreFragment<MineViewModel, FragmentMineBinding>(), Vie
     override fun isNeedChangeStatusBarMode(): Boolean = true
 
     override fun translucentFull(): Boolean = true
-
-    override fun getLayoutId(): Int = R.layout.fragment_mine
 
     override fun initView(root: View) {
         getTopBar()?.run {
@@ -190,7 +188,7 @@ class MineFragment : BaseCoreFragment<MineViewModel, FragmentMineBinding>(), Vie
         }
     }
 
-    override fun getBindingClick(): Any? = ProxyClick()
+    override fun getBindingClick(): Any = ProxyClick()
 
     inner class ProxyClick {
 

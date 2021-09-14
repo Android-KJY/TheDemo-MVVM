@@ -1,6 +1,7 @@
 package com.theone.demo.viewmodel
 
 import com.theone.demo.app.net.Url
+import com.theone.demo.data.repository.ApiRepository
 import com.theone.mvvm.core.ext.request
 import com.theone.mvvm.core.base.viewmodel.BaseRequestViewModel
 import com.theone.mvvm.callback.databind.StringObservableField
@@ -40,12 +41,7 @@ class AddShareArticleViewModel:BaseRequestViewModel<String>() {
 
     override fun requestServer() {
        request({
-           val res = RxHttp.postForm(Url.SHARE_ARTICLE)
-               .add("title",title.get())
-               .add("link",url.get())
-               .toResponse<String>()
-               .await()
-           onSuccess(res)
+           onSuccess(ApiRepository().shareArticle(title.get(),url.get()))
        },"添加中")
     }
 }

@@ -75,6 +75,6 @@ class SamplePagerFragment:
 
     override fun getRecyclerView(): RecyclerView = mBinding.recyclerView
 
-    override fun getRefreshLayout(): PullRefreshLayout? = mBinding.refreshLayout
+    override fun getRefreshLayout(): PullRefreshLayout = mBinding.refreshLayout
 
 }

@@ -9,6 +9,7 @@ import com.theone.demo.data.model.bean.ArticleResponse
 import com.theone.demo.data.model.bean.BannerResponse
 import com.theone.demo.app.net.PagerResponse
 import com.theone.demo.app.net.Url
+import com.theone.demo.data.repository.ApiRepository
 import com.theone.mvvm.callback.livedata.StringLiveData
 import com.theone.mvvm.core.ext.request
 import rxhttp.wrapper.param.RxHttp
@@ -46,15 +47,9 @@ class HomeViewModel : ArticleViewModel() {
 
     override fun requestServer() {
         request({
-            val response = RxHttp.get(Url.HOME_ARTICLE, page)
-                .setCacheMode(getCacheMode())
-                .toResponse<PagerResponse<List<ArticleResponse>>>()
-                .await()
+            val response = ApiRepository().getArticles(Url.HOME_ARTICLE,page,getCacheMode())
             if(isFirst || isFresh){
-                mBanners.value = RxHttp.get(Url.HOME_BANNER)
-                    .setCacheMode(getCacheMode())
-                    .toResponse<List<BannerResponse>>()
-                    .await()
+                mBanners.value = ApiRepository().getBanners(Url.HOME_BANNER,getCacheMode())
             }
             onSuccess(response)
         })

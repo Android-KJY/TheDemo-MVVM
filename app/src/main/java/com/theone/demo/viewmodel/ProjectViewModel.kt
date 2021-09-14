@@ -2,6 +2,7 @@ package com.theone.demo.viewmodel
 
 import com.theone.demo.data.model.bean.ClassifyResponse
 import com.theone.demo.app.net.Url
+import com.theone.demo.data.repository.ApiRepository
 import com.theone.mvvm.core.ext.request
 import com.theone.mvvm.core.base.viewmodel.BaseRequestViewModel
 import rxhttp.wrapper.param.RxHttp
@@ -36,11 +37,7 @@ class ProjectViewModel : BaseRequestViewModel<List<ClassifyResponse>>() {
 
     override fun requestServer() {
         request({
-            val response = RxHttp.get(Url.PROJECT_ITEM)
-                .setCacheMode(getCacheMode(true))
-                .toResponse<List<ClassifyResponse>>()
-                .await()
-            onSuccess(response)
+            onSuccess(ApiRepository().getProjectItems())
         })
     }
 

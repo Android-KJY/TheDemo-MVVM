@@ -3,6 +3,8 @@ package com.theone.demo.viewmodel
 import com.theone.demo.app.net.PagerResponse
 import com.theone.demo.app.net.Url
 import com.theone.demo.data.model.bean.IntegralResponse
+import com.theone.demo.data.repository.ApiRepository
+import com.theone.mvvm.callback.databind.BooleanObservableField
 import com.theone.mvvm.core.ext.request
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
@@ -34,17 +36,16 @@ import rxhttp.wrapper.param.toResponse
  */
 class IntegralRankViewModel:BasePagerViewModel<IntegralResponse>() {
 
+    val showMineRank:BooleanObservableField = BooleanObservableField(false)
+
     init {
         startPage = 1
     }
 
     override fun requestServer() {
         request({
-            val response = RxHttp.get(Url.INTEGRAL_RANK,page)
-                .setCacheMode(getCacheMode())
-                .toResponse<PagerResponse<List<IntegralResponse>>>()
-                .await()
-            onSuccess(response)
+            onSuccess(ApiRepository().getIntegralRank(page,getCacheMode()))
+            showMineRank.set(true)
         })
     }
 

@@ -2,6 +2,7 @@ package com.theone.demo.viewmodel
 
 import com.theone.demo.app.net.Url
 import com.theone.demo.data.model.bean.SearchResponse
+import com.theone.demo.data.repository.ApiRepository
 import com.theone.mvvm.core.ext.request
 import com.theone.mvvm.core.base.viewmodel.BaseRequestViewModel
 import com.theone.mvvm.callback.databind.BooleanObservableField
@@ -39,11 +40,7 @@ class HotSearchViewModel:BaseRequestViewModel<List<SearchResponse>>() {
 
     override fun requestServer() {
         request({
-           val res =  RxHttp.get(Url.HOT_KEYS)
-                .setCacheMode(getCacheMode(isFirst.get()))
-                .toResponse<List<SearchResponse>>()
-               .await()
-            onSuccess(res)
+            onSuccess(ApiRepository().getHotKeys(getCacheMode(isFirst.get())))
         })
     }
 

@@ -8,7 +8,7 @@ import com.theone.demo.R
 import com.theone.demo.databinding.FragmentTestBinding
 import com.theone.demo.ui.fragment.category.NavFragment
 import com.theone.demo.ui.fragment.category.SystemFragment
-import com.theone.demo.viewmodel.TestViewModel
+import com.theone.demo.viewmodel.state.TestViewModel
 import com.theone.mvvm.core.base.fragment.BaseCoreFragment
 import java.util.ArrayList
 

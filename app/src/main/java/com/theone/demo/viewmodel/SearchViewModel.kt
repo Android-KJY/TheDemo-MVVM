@@ -34,9 +34,8 @@ class SearchViewModel : BaseListViewModel<String>() {
 
     override fun requestServer() {
         request({
-            val res = CacheUtil.getSearchHistoryData()
             onSuccess(
-                res,
+                CacheUtil.getSearchHistoryData(),
                 PagerResponse<String>().apply {
                     curPage = 1
                     pageCount = 1

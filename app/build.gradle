@@ -5,8 +5,8 @@ android {
 
     defaultConfig {
         applicationId "com.theone.demo"
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -20,4 +20,7 @@ dependencies {
     implementation "com.tencent:mmkv-static:1.1.0"
     //防崩溃
     implementation 'cat.ereza:customactivityoncrash:2.3.0'
+    //生成RxHttp类
+    kapt "com.github.liujingxing.rxhttp:rxhttp-compiler:$rxhttpVersion"
+
 }

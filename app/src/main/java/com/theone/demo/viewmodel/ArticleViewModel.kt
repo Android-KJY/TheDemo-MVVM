@@ -7,6 +7,7 @@ import com.theone.demo.app.net.PagerResponse
 import com.theone.demo.app.net.Url
 import com.theone.demo.app.util.CacheUtil
 import com.theone.demo.data.model.bean.CollectBus
+import com.theone.demo.data.repository.ApiRepository
 import com.theone.mvvm.core.ext.request
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
@@ -20,11 +21,7 @@ abstract class ArticleViewModel(val url: String? = null) : BasePagerViewModel<Ar
 
     override fun requestServer() {
         request({
-            val response = RxHttp.get(url, page)
-                .setCacheMode(getCacheMode())
-                .toResponse<PagerResponse<List<ArticleResponse>>>()
-                .await()
-            onSuccess(response)
+            onSuccess(ApiRepository().getArticles(url,page,getCacheMode()))
         })
     }
 
@@ -47,12 +44,8 @@ abstract class ArticleViewModel(val url: String? = null) : BasePagerViewModel<Ar
     }
 
     open fun collection(article: ArticleResponse, event: AppViewModel) {
-        val url = if (article.collect) Url.UN_LIST_COLLECTION else Url.COLLECTION_ARTICLE
         request({
-            RxHttp.postForm(url, article.getArticleId())
-                .toResponse<String>()
-                .await()
-            event.collectEvent.value = CollectBus(article.getArticleId(), !article.collect)
+            event.collectEvent.value = ApiRepository().collectionArticle(article.getArticleId(),article.collect)
         }, null, collectionError)
     }
 
