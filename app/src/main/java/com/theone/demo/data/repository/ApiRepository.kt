@@ -32,8 +32,15 @@ import rxhttp.wrapper.param.toResponse
  * @email 625805189@qq.com
  * @remark
  */
-class ApiRepository {
+class ApiRepository private constructor(){
 
+    private object Holder {
+        val INSTANCE = ApiRepository()
+    }
+    companion object {
+        val INSTANCE = Holder.INSTANCE
+    }
+    
     suspend fun loginOrRegister(
         account: String,
         password: String,

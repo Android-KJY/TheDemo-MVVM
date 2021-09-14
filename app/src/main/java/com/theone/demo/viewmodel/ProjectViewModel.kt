@@ -37,7 +37,7 @@ class ProjectViewModel : BaseRequestViewModel<List<ClassifyResponse>>() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getProjectItems())
+            onSuccess(ApiRepository.INSTANCE.getProjectItems())
         })
     }
 

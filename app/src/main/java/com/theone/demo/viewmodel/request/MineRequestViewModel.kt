@@ -38,7 +38,7 @@ class MineRequestViewModel : BaseRequestViewModel<IntegralResponse>() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getUserCoin(getCacheMode(isFirst.get())))
+            onSuccess(ApiRepository.INSTANCE.getUserCoin(getCacheMode(isFirst.get())))
         })
     }
 

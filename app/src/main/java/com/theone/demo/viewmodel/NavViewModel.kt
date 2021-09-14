@@ -37,7 +37,7 @@ class NavViewModel:BasePagerViewModel<NavigationResponse>() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getNavigation(getCacheMode()))
+            onSuccess(ApiRepository.INSTANCE.getNavigation(getCacheMode()))
         })
     }
 

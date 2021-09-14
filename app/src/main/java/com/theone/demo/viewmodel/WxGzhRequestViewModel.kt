@@ -37,7 +37,7 @@ class WxGzhRequestViewModel : BaseRequestViewModel<List<ClassifyResponse>>() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getWxGzh(getCacheMode(true)))
+            onSuccess(ApiRepository.INSTANCE.getWxGzh(getCacheMode(true)))
         })
     }
 

@@ -41,6 +41,11 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : Base
 
     lateinit var mBinding: DB
 
+    /**
+     * 布局ID
+     * @return Int
+     */
+    @Deprecated(message = "DataBinding通过泛型反射进行创建，这个不再需要", replaceWith = ReplaceWith(""))
     override fun getLayoutId(): Int = 0
 
     /**

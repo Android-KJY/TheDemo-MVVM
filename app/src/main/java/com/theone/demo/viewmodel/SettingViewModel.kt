@@ -12,7 +12,7 @@ class SettingViewModel:BaseRequestViewModel<String>() {
 
     fun loginOut(){
         request({
-            onSuccess(ApiRepository().loginOut())
+            onSuccess(ApiRepository.INSTANCE.loginOut())
         },"退出中")
     }
 

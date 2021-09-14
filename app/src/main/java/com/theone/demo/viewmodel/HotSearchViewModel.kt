@@ -40,7 +40,7 @@ class HotSearchViewModel:BaseRequestViewModel<List<SearchResponse>>() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getHotKeys(getCacheMode(isFirst.get())))
+            onSuccess(ApiRepository.INSTANCE.getHotKeys(getCacheMode(isFirst.get())))
         })
     }
 

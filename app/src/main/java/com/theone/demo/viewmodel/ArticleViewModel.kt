@@ -21,7 +21,7 @@ abstract class ArticleViewModel(val url: String? = null) : BasePagerViewModel<Ar
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getArticles(url,page,getCacheMode()))
+            onSuccess(ApiRepository.INSTANCE.getArticles(url,page,getCacheMode()))
         })
     }
 
@@ -45,7 +45,7 @@ abstract class ArticleViewModel(val url: String? = null) : BasePagerViewModel<Ar
 
     open fun collection(article: ArticleResponse, event: AppViewModel) {
         request({
-            event.collectEvent.value = ApiRepository().collectionArticle(article.getArticleId(),article.collect)
+            event.collectEvent.value = ApiRepository.INSTANCE.collectionArticle(article.getArticleId(),article.collect)
         }, null, collectionError)
     }
 

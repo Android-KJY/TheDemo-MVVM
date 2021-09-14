@@ -41,7 +41,7 @@ class AddShareArticleViewModel:BaseRequestViewModel<String>() {
 
     override fun requestServer() {
        request({
-           onSuccess(ApiRepository().shareArticle(title.get(),url.get()))
+           onSuccess(ApiRepository.INSTANCE.shareArticle(title.get(),url.get()))
        },"添加中")
     }
 }

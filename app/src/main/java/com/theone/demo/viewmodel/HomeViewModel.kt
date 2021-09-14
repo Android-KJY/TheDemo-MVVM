@@ -47,9 +47,9 @@ class HomeViewModel : ArticleViewModel() {
 
     override fun requestServer() {
         request({
-            val response = ApiRepository().getArticles(Url.HOME_ARTICLE,page,getCacheMode())
+            val response = ApiRepository.INSTANCE.getArticles(Url.HOME_ARTICLE,page,getCacheMode())
             if(isFirst || isFresh){
-                mBanners.value = ApiRepository().getBanners(Url.HOME_BANNER,getCacheMode())
+                mBanners.value = ApiRepository.INSTANCE.getBanners(Url.HOME_BANNER,getCacheMode())
             }
             onSuccess(response)
         })

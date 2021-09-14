@@ -41,7 +41,7 @@ class IntegralHistoryViewModel:BasePagerViewModel<IntegralHistoryResponse>() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getIntegralHistory(page,getCacheMode()))
+            onSuccess(ApiRepository.INSTANCE.getIntegralHistory(page,getCacheMode()))
         })
     }
 

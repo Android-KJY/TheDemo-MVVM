@@ -40,7 +40,7 @@ class SearchResultModel : ArticleViewModel() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().search(page,mKey,getCacheMode()))
+            onSuccess(ApiRepository.INSTANCE.search(page,mKey,getCacheMode()))
         })
     }
 

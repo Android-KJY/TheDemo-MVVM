@@ -39,7 +39,7 @@ class WxGzhItemViewModel : ArticleViewModel() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getWxGzhItems(page,mId,getCacheMode()))
+            onSuccess(ApiRepository.INSTANCE.getWxGzhItems(page,mId,getCacheMode()))
         })
     }
 

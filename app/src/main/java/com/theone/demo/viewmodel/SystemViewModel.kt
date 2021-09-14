@@ -37,7 +37,7 @@ class SystemViewModel:BasePagerViewModel<SystemResponse>() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().getTree(getCacheMode()))
+            onSuccess(ApiRepository.INSTANCE.getTree(getCacheMode()))
         })
     }
 

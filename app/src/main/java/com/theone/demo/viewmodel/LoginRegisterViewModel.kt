@@ -17,7 +17,7 @@ class LoginRegisterViewModel : BaseRequestViewModel<UserInfo>() {
 
     override fun requestServer() {
         request({
-            onSuccess(ApiRepository().loginOrRegister(account.get(),password.get(),repassword.get(),isRegister.get()))
+            onSuccess(ApiRepository.INSTANCE.loginOrRegister(account.get(),password.get(),repassword.get(),isRegister.get()))
         }, if (isRegister.get()) "注册中" else "登录中")
     }
 
