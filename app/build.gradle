@@ -13,7 +13,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.Theoneee:TheCore-MVVM:1.0.1'
+    implementation project(path: ':core')
+//    implementation 'com.github.Theoneee:TheCore-MVVM:1.0.1'
     //轮播图
     implementation 'com.github.zhpanvip:BannerViewPager:3.1.5'
     //微信开源项目，替代SP

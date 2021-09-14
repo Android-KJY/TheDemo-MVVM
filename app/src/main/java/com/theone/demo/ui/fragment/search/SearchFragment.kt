@@ -26,7 +26,6 @@ import com.theone.common.ext.showViews
 import com.theone.common.ext.textStringTrim
 import com.theone.common.widget.TheSearchView
 import com.theone.mvvm.core.base.fragment.BasePagerSwipeRefreshFragment
-import com.theone.mvvm.core.databinding.BaseRecyclerPagerFragmentBinding
 import com.theone.mvvm.core.databinding.BaseSwipeRefreshFragmentBinding
 import com.theone.mvvm.core.ext.showSuccessPage
 import com.theone.mvvm.ext.qmui.showMsgDialog

@@ -1,15 +1,11 @@
 package com.theone.demo.ui.fragment.category
 
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.theone.demo.data.model.bean.SystemResponse
 import com.theone.demo.ui.adapter.SystemAdapter
 import com.theone.demo.ui.fragment.base.BasePagerDbFragment
-import com.theone.demo.ui.fragment.base.BasePagerListFragment
 import com.theone.demo.viewmodel.SystemViewModel
-import com.theone.mvvm.core.databinding.BaseRecyclerPagerFragmentBinding
 
 
 //  ┏┓　　　┏┓
