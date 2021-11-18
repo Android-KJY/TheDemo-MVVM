@@ -17,29 +17,28 @@ configurations.all {
 dependencies {
     api project(path: ':base')
     api project(path: ':common')
-//    api 'com.gitee.theoneee:The-Base-MVVM:1.0.0'
-//    api 'com.gitee.theoneee:The-Base-Common:1.0.0'
+//    api "com.github.Theoneee:TheBase-MVVM:$TheBaseVersion"
+//    api "com.github.Theoneee:TheCommon:$TheCommonVersion"
 
     api "androidx.multidex:multidex:$multidexVersion"
 
     api "com.zhy:okhttputils:$okhttpUtilVersion"
 
+    // okhttp
+    api "com.squareup.okhttp3:okhttp:$okhttpVersion"
+
     // RxHttp
     api "com.github.liujingxing.rxhttp:rxhttp:$rxhttpVersion"
-    // 管理协程生命周期，页面销毁，关闭请求
-    api "com.github.liujingxing.rxlife:rxlife-coroutine:$rxlifeCoroutine"
-    // 管理RxJava2生命周期，页面销毁，关闭请求
-    api "com.github.liujingxing.rxlife:rxlife-rxjava2:$rxlifeVersion"
     api "com.github.liujingxing.rxhttp:converter-fastjson:$rxhttpVersion"
 
     // RxJava RxAndroid
-    api "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
-    api "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+    api "io.reactivex.rxjava3:rxjava:$rxjavaVersion"
+    api "io.reactivex.rxjava3:rxandroid:$rxandroidVersion"
+    // 管理RxJava2生命周期，页面销毁，关闭请求
+    api "com.github.liujingxing.rxlife:rxlife-rxjava3:$rxlifeVersion"
 
-    // okhttp
-    api "com.squareup.okhttp3:okhttp:$okhttpVersion"
     // cookie
-    api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    api "com.github.franmontiel:PersistentCookieJar:$cookieJarVersion"
 
     api "com.github.lzyzsd:jsbridge:$jsbridgeVersion"
     // 权限申请
@@ -52,7 +51,7 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
     // 图片选择器
-    api "io.github.lucksiege:pictureselector:v2.7.3-rc06"
+    api "io.github.lucksiege:pictureselector:$PictureSelectorVersion"
     // 指示器
     api "com.github.hackware1993:MagicIndicator:$MagicIndicatorVersion"
     // 适配器
@@ -61,5 +60,5 @@ dependencies {
     //启动优化异步加载
     api "com.effective.android:anchors:$anchorsVersion"
 
-    api 'com.github.getActivity:ToastUtils:9.0'
+    api "com.github.getActivity:ToastUtils:$toastVersion"
 }

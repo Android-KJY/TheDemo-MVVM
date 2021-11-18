@@ -49,10 +49,4 @@ abstract class BasePagerViewModel<T> : BaseListViewModel<T>() {
 
 }
 
-fun getCacheMode(isFirst: Boolean): CacheMode {
-    return if (isFirst)
-        CacheMode.READ_CACHE_FAILED_REQUEST_NETWORK
-    else
-        CacheMode.NETWORK_SUCCESS_WRITE_CACHE
-}
 

@@ -21,18 +21,13 @@ import androidx.databinding.ViewDataBinding
 import com.github.lzyzsd.jsbridge.BridgeHandler
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.qmuiteam.qmui.kotlin.matchParent
-import com.qmuiteam.qmui.kotlin.wrapContent
 import com.qmuiteam.qmui.util.QMUIResHelper
 import com.qmuiteam.qmui.widget.QMUIProgressBar
+import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import com.qmuiteam.qmui.widget.webview.QMUIWebView
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewContainer
 import com.theone.common.constant.BundleConstant
-import com.theone.common.ext.dp2px
-import com.theone.common.ext.getValueNonNull
-import com.theone.common.ext.gone
-import com.theone.common.ext.showViews
-import com.theone.common.widget.TheMarqueeTextView
+import com.theone.common.ext.*
 import com.theone.mvvm.base.viewmodel.BaseViewModel
 import com.theone.mvvm.core.R
 import com.theone.mvvm.core.callback.IWeb
@@ -86,7 +81,6 @@ abstract class BaseWebFragment<VM : BaseViewModel, DB : ViewDataBinding> :
         BridgeWebView(mActivity)
     }
     private val mProgressHandler: ProgressHandler by lazy { ProgressHandler() }
-    private lateinit var mTitleView: TheMarqueeTextView
 
     protected val mIWeb: IWeb by getValueNonNull(BundleConstant.DATA)
     private lateinit var mUrl: String
@@ -97,37 +91,23 @@ abstract class BaseWebFragment<VM : BaseViewModel, DB : ViewDataBinding> :
 
     abstract fun getWebContainer(): QMUIWebViewContainer
     abstract fun getProgressBar(): QMUIProgressBar
+    abstract override fun getTopBar():QMUITopBarLayout?
 
     override fun initView(root: View) {
         initTopBar()
     }
 
-    private fun initTopBar() {
+    protected open fun initTopBar() {
         getTopBar()?.run {
             addLeftBackImageButton().setOnClickListener {
                 finish()
             }
-            // QMUI的Title用的是QMUIQQFaceView，无法使用跑马灯效果，这里重新设置一个
-            // setTitle(mIWeb.getWebTitle().toHtml().toString())
-            mTitleView = TheMarqueeTextView(context).apply {
-                layoutParams = RelativeLayout.LayoutParams(matchParent, wrapContent).apply {
-                    addRule(RelativeLayout.RIGHT_OF, R.id.qmui_topbar_item_left_back)
-                    gravity = Gravity.CENTER
-                    marginEnd = dp2px(20)
-                }
-                marqueeRepeatLimit = Int.MAX_VALUE
-                isFocusable = true
-                textSize = 17f
-                ellipsize = TextUtils.TruncateAt.MARQUEE
-                setSingleLine(true)
-                setHorizontallyScrolling(true)
-                isFocusableInTouchMode = true
-                mIWeb.getWebTitle()?.let {
-                    text = it
-                }
-            }
-            setCenterView(mTitleView)
+            setTitle(mIWeb.getWebTitle())
         }
+    }
+
+    protected open fun setTopBarTitle(title:String?){
+        getTopBar()?.setTitle(title)
     }
 
     override fun onLazyInit() {
@@ -240,7 +220,7 @@ abstract class BaseWebFragment<VM : BaseViewModel, DB : ViewDataBinding> :
         override fun onReceivedTitle(view: WebView?, title: String?) {
             super.onReceivedTitle(view, title)
             if (mIWeb.isWebTitleNeedChange())
-                mTitleView.text = title
+                setTopBarTitle(title)
         }
 
         override fun onShowCustomView(view: View?, callback: CustomViewCallback?) {

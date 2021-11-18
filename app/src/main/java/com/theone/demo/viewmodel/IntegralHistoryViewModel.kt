@@ -1,12 +1,7 @@
 package com.theone.demo.viewmodel
 
-import com.theone.demo.app.net.PagerResponse
-import com.theone.demo.app.net.Url
 import com.theone.demo.data.model.bean.IntegralHistoryResponse
 import com.theone.demo.data.repository.ApiRepository
-import com.theone.mvvm.core.ext.request
-import rxhttp.wrapper.param.RxHttp
-import rxhttp.wrapper.param.toResponse
 
 
 //  ┏┓　　　┏┓

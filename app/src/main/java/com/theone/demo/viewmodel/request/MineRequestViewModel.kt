@@ -2,8 +2,7 @@ package com.theone.demo.viewmodel.request
 
 import com.theone.demo.data.model.bean.IntegralResponse
 import com.theone.demo.data.repository.ApiRepository
-import com.theone.demo.viewmodel.getCacheMode
-import com.theone.mvvm.core.ext.request
+import com.theone.demo.app.ext.getCacheMode
 import com.theone.mvvm.core.base.viewmodel.BaseRequestViewModel
 import com.theone.mvvm.callback.databind.BooleanObservableField
 

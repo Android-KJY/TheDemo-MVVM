@@ -14,13 +14,15 @@ android {
 
 dependencies {
     implementation project(path: ':core')
-//    implementation 'com.github.Theoneee:TheCore-MVVM:1.0.1'
+//    implementation 'com.github.Theoneee:TheCore-MVVM:1.0.2'
     //轮播图
     implementation 'com.github.zhpanvip:BannerViewPager:3.1.5'
     //微信开源项目，替代SP
     implementation "com.tencent:mmkv-static:1.1.0"
     //防崩溃
     implementation 'cat.ereza:customactivityoncrash:2.3.0'
+    // html解析
+    implementation "org.jsoup:jsoup:1.11.3"
     //生成RxHttp类
     kapt "com.github.liujingxing.rxhttp:rxhttp-compiler:$rxhttpVersion"
 

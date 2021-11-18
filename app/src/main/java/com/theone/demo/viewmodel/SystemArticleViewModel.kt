@@ -1,7 +1,6 @@
 package com.theone.demo.viewmodel
 
 import com.theone.demo.data.repository.ApiRepository
-import com.theone.mvvm.core.ext.request
 
 
 //  ┏┓　　　┏┓

@@ -5,10 +5,7 @@ import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import com.qmuiteam.qmui.arch.annotation.DefaultFirstFragment
 import com.theone.demo.ui.fragment.IndexFragment
-import com.theone.demo.ui.fragment.sample.CustomViewFragment
-import com.theone.demo.ui.fragment.sample.SampleFragment
 import com.theone.mvvm.base.activity.BaseFragmentActivity
-import rxhttp.wrapper.param.RxHttp
 
 @DefaultFirstFragment(IndexFragment::class)
 class MainActivity : BaseFragmentActivity() {

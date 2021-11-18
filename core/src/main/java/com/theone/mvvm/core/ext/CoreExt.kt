@@ -2,8 +2,13 @@ package com.theone.mvvm.core.ext
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import androidx.fragment.app.Fragment
+import com.theone.mvvm.core.base.viewmodel.BaseRequestViewModel
 import com.theone.mvvm.core.widge.dialog.ProgressDialog
 import com.theone.mvvm.entity.ProgressBean
+import com.theone.mvvm.ext.qmui.hideLoadingDialog
+import com.theone.mvvm.ext.qmui.showFailTipsDialog
+import androidx.lifecycle.Observer
 
 //  ┏┓　　　┏┓
 //┏┛┻━━━┛┻┓
@@ -49,4 +54,14 @@ fun Activity.showProgressDialog(data:ProgressBean){
 fun hideProgressDialog(){
     progressDialog?.dismiss()
     progressDialog = null
+}
+
+fun Fragment.addFailTipsObserve(vararg vms: BaseRequestViewModel<*>) {
+    for (vm in vms) {
+        vm.getErrorLiveData().observeInFragment(this, Observer {
+            hideLoadingDialog()
+            hideProgressDialog()
+            showFailTipsDialog(it)
+        })
+    }
 }

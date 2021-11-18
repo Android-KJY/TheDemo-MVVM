@@ -1,11 +1,10 @@
 package com.theone.demo.ui.fragment.home
 
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.RecyclerView
 import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton
 import com.qmuiteam.qmui.kotlin.matchParent
@@ -13,17 +12,17 @@ import com.qmuiteam.qmui.qqface.QMUIQQFaceView
 import com.qmuiteam.qmui.util.QMUIColorHelper
 import com.qmuiteam.qmui.util.QMUIResHelper
 import com.theone.common.ext.dp2px
+import com.theone.common.ext.invisibleViews
+import com.theone.common.ext.showViews
 import com.theone.demo.R
-import com.theone.demo.data.model.bean.BannerResponse
-import com.theone.demo.viewmodel.HomeViewModel
 import com.theone.demo.app.widget.OffsetLinearLayoutManager
 import com.theone.demo.app.widget.banner.HomeBannerAdapter
 import com.theone.demo.app.widget.banner.HomeBannerViewHolder
+import com.theone.demo.data.model.bean.BannerResponse
 import com.theone.demo.ui.fragment.base.BaseArticleFragment
 import com.theone.demo.ui.fragment.search.SearchFragment
 import com.theone.demo.ui.fragment.web.WebExplorerFragment
-import com.theone.common.ext.invisibleViews
-import com.theone.common.ext.showViews
+import com.theone.demo.viewmodel.HomeViewModel
 import com.theone.mvvm.ext.qmui.updateStatusBarMode
 import com.zhpan.bannerview.BannerViewPager
 import com.zhpan.bannerview.constants.IndicatorGravity
@@ -85,11 +84,28 @@ class HomeFragment : BaseArticleFragment<HomeViewModel>(), View.OnClickListener 
             if (showBanner())
                 setBackgroundAlpha(0)
         }
+
+
+        val liveData = MutableLiveData<Int>()
+
+        liveData.observe(this) {
+            Log.e(TAG, "observe1 : $it")
+            if (it == 1) {
+                liveData.value = 2
+            }
+        }
+
+        liveData.observe(this) {
+            Log.e(TAG, "observe2 : $it")
+        }
+
+        liveData.value = 1
+
     }
 
     override fun createObserver() {
         super.createObserver()
-        if (showBanner()){
+        if (showBanner()) {
             mViewModel.getBanners().observeInFragment(this, Observer {
                 mBannerViewPager?.create(it)
                 setStatusBarMode(false)
@@ -105,27 +121,28 @@ class HomeFragment : BaseArticleFragment<HomeViewModel>(), View.OnClickListener 
                 mActivity,
                 R.attr.qmui_topbar_height
             )).toFloat()
-            mBannerViewPager = BannerViewPager<BannerResponse, HomeBannerViewHolder>(mActivity).apply {
-                layoutParams = ViewGroup.LayoutParams(matchParent, mBannerHeight)
-                adapter = HomeBannerAdapter()
-                setAutoPlay(true)
-                setInterval(3000)
-                setIndicatorGravity(IndicatorGravity.END)
-                setIndicatorSliderColor(
-                    getColor(mActivity, R.color.white),
-                    QMUIResHelper.getAttrColor(mActivity, R.attr.app_skin_primary_color)
-                )
-                setOnPageClickListener { position: Int ->
-                    mViewModel.getBanners().value?.let {
-                        startFragment(
-                            WebExplorerFragment.newInstance(
-                                it[position]
+            mBannerViewPager =
+                BannerViewPager<BannerResponse, HomeBannerViewHolder>(mActivity).apply {
+                    layoutParams = ViewGroup.LayoutParams(matchParent, mBannerHeight)
+                    adapter = HomeBannerAdapter()
+                    setAutoPlay(true)
+                    setInterval(3000)
+                    setIndicatorGravity(IndicatorGravity.END)
+                    setIndicatorSliderColor(
+                        getColor(mActivity, R.color.white),
+                        QMUIResHelper.getAttrColor(mActivity, R.attr.app_skin_primary_color)
+                    )
+                    setOnPageClickListener { position: Int ->
+                        mViewModel.getBanners().value?.let {
+                            startFragment(
+                                WebExplorerFragment.newInstance(
+                                    it[position]
+                                )
                             )
-                        )
+                        }
                     }
+                    mAdapter.addHeaderView(this)
                 }
-                mAdapter.addHeaderView(this)
-            }
         }
     }
 

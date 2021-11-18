@@ -2,7 +2,10 @@ package com.theone.demo.ui.fragment.sample
 
 import android.view.View
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView
+import com.theone.demo.app.net.Url
+import com.theone.demo.data.model.bean.BannerResponse
 import com.theone.demo.databinding.FragmentSampleBinding
+import com.theone.demo.ui.fragment.web.WebExplorerFragment
 import com.theone.mvvm.ext.qmui.addToGroup
 import com.theone.mvvm.base.viewmodel.BaseViewModel
 import com.theone.mvvm.core.base.fragment.BaseCoreFragment
@@ -75,7 +78,15 @@ class SampleFragment : BaseCoreFragment<BaseViewModel, FragmentSampleBinding>(),
                 mGroupListView -> GroupListViewFragment()
                 mStringExt -> StringExtFragment()
                 mCustomView -> CustomViewFragment()
-                else -> TestFragment()
+                else -> {
+//                    WebExplorerFragment.newInstance(
+//                        BannerResponse(
+//                            title = "",
+//                            url = Url.INTEGRAL_RULES
+//                        )
+//                    )
+                    TestFragment()
+                }
             }
         )
     }

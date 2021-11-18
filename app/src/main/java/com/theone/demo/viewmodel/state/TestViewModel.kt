@@ -29,6 +29,6 @@ import com.theone.mvvm.callback.databind.StringObservableField
  */
 class TestViewModel:BaseViewModel() {
 
-    val cover = StringObservableField("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2586870947,764155106&fm=26&gp=0.jpg")
+    val cover = StringObservableField("https://p.pstatp.com/origin/pgc-image/bf0e0e16e8e44c62a3318ab9bb12fbb7")
 
 }

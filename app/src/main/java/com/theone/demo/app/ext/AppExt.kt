@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.theone.mvvm.ext.qmui.showFailTipsDialog
+import rxhttp.wrapper.cahce.CacheMode
 
 
 //  ┏┓　　　┏┓
@@ -32,6 +33,13 @@ import com.theone.mvvm.ext.qmui.showFailTipsDialog
  * @remark
  */
 
+
+fun getCacheMode(isFirst: Boolean): CacheMode {
+    return if (isFirst)
+        CacheMode.READ_CACHE_FAILED_REQUEST_NETWORK
+    else
+        CacheMode.NETWORK_SUCCESS_WRITE_CACHE
+}
 
 /**
  * 加入qq聊天群

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
+import com.theone.common.ext.startWebView
 import com.theone.demo.R
 import com.theone.demo.app.util.CacheUtil
 import com.theone.demo.app.ext.checkLogin
@@ -14,6 +15,7 @@ import com.theone.demo.ui.adapter.ArticleAdapter
 import com.theone.demo.ui.fragment.collection.CollectionArticleFragment
 import com.theone.demo.ui.fragment.web.WebExplorerFragment
 import com.theone.demo.viewmodel.ArticleViewModel
+import com.theone.mvvm.core.base.activity.BaseWebActivity
 import com.theone.mvvm.core.databinding.BaseSwipeRefreshFragmentBinding
 import com.theone.mvvm.ext.qmui.showFailTipsDialog
 

@@ -43,8 +43,6 @@ class TestFragment : BaseCoreFragment<TestViewModel, FragmentTestBinding>() {
 
     override fun showTopBar(): Boolean = false
 
-    override fun getLayoutId(): Int = R.layout.fragment_test
-
     private val mAdapter: MyPagerAdapter by lazy {
         MyPagerAdapter(childFragmentManager).apply {
             addFragment(SystemFragment(), "体系")

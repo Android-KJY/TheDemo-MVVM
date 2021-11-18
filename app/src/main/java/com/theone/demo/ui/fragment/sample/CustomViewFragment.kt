@@ -34,8 +34,6 @@ import com.theone.mvvm.ext.qmui.setTitleWithBackBtn
  */
 class CustomViewFragment : BaseCoreFragment<BaseViewModel, FragmentCustomViewBinding>() {
 
-    override fun getLayoutId(): Int = R.layout.fragment_custom_view
-
     override fun initView(root: View) {
         getTopBar()?.run {
             setTitleWithBackBtn("CustomView", this@CustomViewFragment)
@@ -43,6 +41,7 @@ class CustomViewFragment : BaseCoreFragment<BaseViewModel, FragmentCustomViewBin
     }
 
     override fun initData() {
+
     }
 
     override fun createObserver() {

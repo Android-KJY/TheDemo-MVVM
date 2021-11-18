@@ -19,7 +19,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.qmuiteam.qmui.util.QMUIResHelper
 import com.qmuiteam.qmui.widget.QMUIProgressBar
-import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import com.qmuiteam.qmui.widget.webview.QMUIWebView
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewClient
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewContainer

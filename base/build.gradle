@@ -9,10 +9,9 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     // QMUI
-    api "com.qmuiteam:qmui:$qmuiVersion"
-    api "com.qmuiteam:arch:$archVersion"
+    api "com.qmuiteam:qmui:2.0.0-alpha10"
+    api "com.qmuiteam:arch:2.0.0-alpha09"
 
     //lifecycle
     api 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'

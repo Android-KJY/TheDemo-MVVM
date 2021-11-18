@@ -2,6 +2,7 @@ package com.theone.demo.data.model.bean
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
+import com.theone.mvvm.core.callback.IWeb
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -45,6 +46,10 @@ data class ArticleResponse(
     override fun getWebUrl(): String = link
 
     override fun getWebTitle(): String = title
+
+    override fun isWebUrlNeedDecode(): Boolean =  false
+
+    override fun isWebTitleNeedChange(): Boolean = false
 
     fun showTags(): Boolean {
         return null != tags && tags!!.isNotEmpty()
