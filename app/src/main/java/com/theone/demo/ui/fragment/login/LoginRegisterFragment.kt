@@ -2,6 +2,8 @@ package com.theone.demo.ui.fragment.login
 
 import android.view.View
 import com.qmuiteam.qmui.arch.QMUIFragment
+import com.theone.common.constant.BundleConstant
+import com.theone.common.ext.newFragment
 import com.theone.demo.R
 import com.theone.mvvm.base.viewmodel.BaseViewModel
 import com.theone.mvvm.core.data.entity.QMUITabBean
@@ -63,9 +65,15 @@ class LoginRegisterFragment:BaseTabInTitleFragment<BaseViewModel>() {
             addTab("注册")
         }
 
+
         with(fragments){
             add(LoginRegisterItemFragment.newInstant(false))
-            add(LoginRegisterItemFragment.newInstant(true))
+//            add(LoginRegisterItemFragment.newInstant(true))
+            add(
+                newFragment<LoginRegisterItemFragment> {
+                    putBoolean(BundleConstant.TYPE,true)
+                }
+            )
         }
     }
 

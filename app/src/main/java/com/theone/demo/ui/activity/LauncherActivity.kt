@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.qmuiteam.qmui.arch.QMUILatestVisit
+import com.theone.common.ext.startActivity
 import com.theone.demo.R
 import com.theone.demo.app.util.CacheUtil
 import com.theone.demo.app.widget.TypeTextView

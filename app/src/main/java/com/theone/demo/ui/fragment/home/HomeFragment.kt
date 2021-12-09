@@ -89,7 +89,6 @@ class HomeFragment : BaseArticleFragment<HomeViewModel>(), View.OnClickListener 
         val liveData = MutableLiveData<Int>()
 
         liveData.observe(this) {
-            Log.e(TAG, "observe1 : $it")
             if (it == 1) {
                 liveData.value = 2
             }

@@ -1,7 +1,9 @@
 package com.theone.common.ext
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 
 //  ┏┓　　　┏┓
@@ -37,5 +39,11 @@ fun Activity.startActivity(intent: Intent, finish: Boolean = false) {
 }
 
 fun Activity.startActivity(target: Class<*>, finish: Boolean = false) {
-    startActivity(Intent(this, target),finish)
+    startActivity(Intent(this, target), finish)
+}
+
+inline fun <reified T : Activity> Activity.startActivity(putExtra: Intent.() -> Unit) {
+    startActivity(Intent(this, T::class.java).apply {
+        putExtra.invoke(this)
+    })
 }

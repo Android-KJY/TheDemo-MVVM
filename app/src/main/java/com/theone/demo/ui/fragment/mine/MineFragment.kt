@@ -54,7 +54,7 @@ import com.theone.mvvm.ext.qmui.*
  */
 class MineFragment : BaseCoreFragment<MineViewModel, FragmentMineBinding>(), View.OnClickListener {
 
-    val appVm: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
+    private val appVm: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
 
     private val mRequestVm: MineRequestViewModel by viewModels()
 
@@ -137,7 +137,6 @@ class MineFragment : BaseCoreFragment<MineViewModel, FragmentMineBinding>(), Vie
 
     private fun setUserInfo(it: UserInfo?) {
         it.notNull({
-            Log.e(TAG, "setUserInfo: 111" )
             requestIntegral()
             mViewModel.run {
                 name.set(it.getUserName())
@@ -147,7 +146,6 @@ class MineFragment : BaseCoreFragment<MineViewModel, FragmentMineBinding>(), Vie
             }
             mBinding.swipeRefresh.isEnabled = true
         },{
-            Log.e(TAG, "setUserInfo: 222" )
             mBinding.swipeRefresh.isEnabled = false
             mViewModel.run {
                 name.set("请先登录~")

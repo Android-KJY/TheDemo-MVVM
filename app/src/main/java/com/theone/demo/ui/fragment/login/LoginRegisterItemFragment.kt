@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import com.theone.common.constant.BundleConstant.TYPE
+import com.theone.common.ext.bundle
 import com.theone.common.ext.getValueNonNull
 import com.theone.demo.R
 import com.theone.demo.app.util.CacheUtil
@@ -15,15 +16,13 @@ import com.theone.mvvm.core.base.fragment.BaseCoreFragment
 import com.theone.mvvm.ext.qmui.showFailTipsDialog
 import com.theone.mvvm.ext.qmui.showSuccessTipsExitDialog
 
-class LoginRegisterItemFragment :
+class LoginRegisterItemFragment private constructor():
     BaseCoreFragment<LoginRegisterViewModel, FragmentLoginRegisterBinding>() {
 
     companion object {
         fun newInstant(isRegister: Boolean): LoginRegisterItemFragment {
-            return LoginRegisterItemFragment().apply {
-                arguments = Bundle().apply {
-                    putBoolean(TYPE, isRegister)
-                }
+           return LoginRegisterItemFragment().bundle {
+                putBoolean(TYPE, isRegister)
             }
         }
     }

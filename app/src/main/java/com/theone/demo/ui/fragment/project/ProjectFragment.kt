@@ -39,17 +39,17 @@ class ProjectFragment : BaseTabInTitleFragment<BaseViewModel>() {
 
     private val mRequestVm: ProjectViewModel by viewModels()
 
-    override fun getRequestViewModel(): BaseRequestViewModel<List<ClassifyResponse>>?  = mRequestVm
+    override fun getRequestViewModel(): BaseRequestViewModel<List<ClassifyResponse>>  = mRequestVm
 
     override fun initTabAndFragments(
         tabs: MutableList<QMUITabBean>,
         fragments: MutableList<QMUIFragment>
     ) {
-        for (data in mRequestVm.getResponseLiveData().value!!) {
-            tabs.addTab(data.name)
+        mRequestVm.getResponseLiveData().value?.forEach {
+            tabs.addTab(it.name)
             fragments.add(
                 ProjectItemFragment.newInstance(
-                    data.id
+                    it.id
                 )
             )
         }

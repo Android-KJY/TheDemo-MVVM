@@ -7,6 +7,7 @@ import androidx.core.content.getSystemService
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
+import com.theone.common.ext.startActivity
 import com.theone.demo.R
 import com.theone.demo.app.ext.joinQQGroup
 import com.theone.demo.databinding.ActivityErrorBinding
@@ -50,8 +51,6 @@ class ErrorActivity : BaseCoreActivity<BaseViewModel,ActivityErrorBinding>() {
     }
 
     override fun translucentFull(): Boolean =  true
-
-    override fun getLayoutId(): Int = R.layout.activity_error
 
     override fun initView(root:View) {
         getTopBar()?.run {
