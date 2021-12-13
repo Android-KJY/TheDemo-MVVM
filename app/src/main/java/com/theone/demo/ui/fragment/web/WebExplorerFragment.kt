@@ -13,6 +13,7 @@ import com.qmuiteam.qmui.widget.webview.QMUIWebViewContainer
 import com.theone.demo.databinding.FragmentWebExploererBinding
 import com.theone.mvvm.base.viewmodel.BaseViewModel
 import com.theone.common.constant.BundleConstant
+import com.theone.common.ext.bundle
 import com.theone.common.ext.dp2px
 import com.theone.common.ext.toHtml
 import com.theone.common.widget.TheMarqueeTextView
@@ -45,14 +46,12 @@ import com.theone.mvvm.core.callback.IWeb
  * @email 625805189@qq.com
  * @remark
  */
-class WebExplorerFragment : BaseWebFragment<BaseViewModel, FragmentWebExploererBinding>() {
+class WebExplorerFragment private constructor(): BaseWebFragment<BaseViewModel, FragmentWebExploererBinding>() {
 
     companion object {
         fun <T : IWeb> newInstance(data: T): WebExplorerFragment {
-            return WebExplorerFragment().apply {
-                arguments = Bundle().apply {
+            return WebExplorerFragment().bundle {
                     putParcelable(BundleConstant.DATA, data)
-                }
             }
         }
     }

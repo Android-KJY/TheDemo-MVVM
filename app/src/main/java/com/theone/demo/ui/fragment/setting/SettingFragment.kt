@@ -42,8 +42,6 @@ class SettingFragment : BaseCoreFragment<SettingViewModel, FragmentSettingBindin
         resources.getStringArray(R.array.setting_list_animations)
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_setting
-
     override fun initView(rootView: View) {
         mBinding.groupListView.run {
             mAnimation = createItem(

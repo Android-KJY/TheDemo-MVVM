@@ -1,9 +1,12 @@
 package com.theone.demo.app
 
+import android.app.Activity
 import android.app.Application
+import android.os.Bundle
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.effective.android.anchors.task.Task
 import com.tencent.mmkv.MMKV
+import com.theone.common.ext.ThemeUtil.notifyMourning
 import com.theone.demo.BuildConfig
 import com.theone.demo.ui.activity.ErrorActivity
 import com.theone.demo.ui.activity.LauncherActivity
@@ -60,6 +63,31 @@ class App : CoreApplication() {
             .apply()
         super.init(application)
         RxHttpManager.init(RxHttpBuilder(isNeedCookie = true)).setDebug(DEBUG)
+
+        registerActivityLifecycleCallbacks(object :ActivityLifecycleCallbacks{
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                activity.window.notifyMourning()
+            }
+
+            override fun onActivityStarted(activity: Activity) {
+            }
+
+            override fun onActivityResumed(activity: Activity) {
+            }
+
+            override fun onActivityPaused(activity: Activity) {
+            }
+
+            override fun onActivityStopped(activity: Activity) {
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+            }
+
+            override fun onActivityDestroyed(activity: Activity) {
+            }
+
+        })
     }
 
 //    override fun onMainProcessInit() {
